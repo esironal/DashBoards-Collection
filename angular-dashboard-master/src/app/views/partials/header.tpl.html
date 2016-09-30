@@ -1,0 +1,27 @@
+<header role="header" id="top" class="header">
+
+    <div class="header__logo clearfix">
+        <a class="header__logo__link" ng-click="home()">
+            <span class="header__logo__link__text">Банки.ру</span>
+        </a>
+    </div>
+
+    <div class="header__bar">
+        <ul class="nav navbar-nav nav-main-xs navbar-left">
+            <li>
+                <a class="icon-toolsbar navbar-toggler" ng-click="toggleMenu()"><i class="fa fa-bars"></i></a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav nav-main-xs navbar-right">
+            <li>
+                <a class="link icon-toolsbar" popover-html="{{otherServices}}" popover-placement="bottom">
+                    <i class="fa fa-th-large"></i>
+                </a>
+            </li>
+            <li><a class="h-seperate" ng-click="home()">Новости</a></li>
+            <li><a href="#/topic">Сюжеты</a></li>
+            <li><a href="#/settings">Настройки</a></li>
+        </ul>
+    </div>
+
+</header>

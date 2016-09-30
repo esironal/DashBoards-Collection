@@ -1,0 +1,93 @@
+/*********************************************************/
+/*                 Template Layout                       */
+/*********************************************************/
+
+
+body.padTop53 {
+    padding-top: 95px;
+    overflow: visible;
+    @media (min-width: 802px) {
+        padding-top: 54px;
+    }
+}
+
+
+#wrap, #top, .head, #footer {
+    .clearfix();
+}
+
+#wrap {background-color: #333;}
+
+#right {
+    display: none;
+}
+
+
+
+@media (min-width: @screen-tablet) {
+  #left {
+    
+	width: @miniSidebarWidth;
+    position: relative;
+	float: left;
+    .side-right & {float:right;}
+    
+	#menu.affix{
+	  position: fixed;
+	  top:0;
+	  width: @miniSidebarWidth;
+	  overflow-x:hidden;
+	  overflow-y:hidden;
+	  -webkit-overflow-scrolling: touch;
+	  &:hover {overflow-y:scroll;}
+	  
+	  li > ul {
+		position: relative;
+		width: auto;
+		left:auto;
+		top:auto;
+	  }
+	  
+	  > li:last-child > a:last-child {
+		  box-shadow: 0 1px 0 rgba(255,255,255,.05), 0 1px 0 
+rgba(255,255,255,.05) inset;
+		  border-bottom: 1px solid rgba(0,0,0,.3);
+	    }
+	    body.padTop53 & {top:53px;}
+      }
+  }
+    #content {
+      overflow: hidden;
+    }
+    #left {
+        margin-bottom: -10px;
+    }
+}
+@media (min-width: @screen-desktop) {
+    #left {
+        width: @SidebarWidth;
+        #menu.affix{width: @SidebarWidth;}
+        .mini-sidebar & {
+            width: @miniSidebarWidth;
+            #menu.affix{width: @miniSidebarWidth;}
+        }
+    }
+}
+
+@media (min-width: @screen-tablet) {
+    .hide-sidebar {
+        #left, #right {display: none;}
+    }
+}
+
+@media (min-width: 1200px) {
+  body.fixed {
+    #wrap, #footer, #top .navbar.navbar-fixed-top {
+      max-width: 1170px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+/* ================== END Template Layout ============== */

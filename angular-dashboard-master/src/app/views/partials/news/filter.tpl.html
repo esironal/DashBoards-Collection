@@ -1,0 +1,149 @@
+<div class="row form-group">
+
+    <div class="col-lg-6">
+        <div class="input-icon input-icon--inline">
+            <i class="ico fa fa-search"></i>
+            <input type="text" class="form-control" placeholder="Поиск..." name="title" ng-model="$parent.search.title">
+        </div>
+        <!--<a class="btn btn-primary" ng-click="searchByFilter()">Искать</a>-->
+        <a class="btn btn-default" ng-click="$parent.toggleFilter()">Фильтр</a>
+    </div>
+
+    <div class="col-lg-6 text-right">
+        <div class="row text-right">
+            <div class="col-md-2 pull-right">
+                <select ng-model="$parent.entryLimit" class="form-control">
+                    <option>5</option>
+                    <option>10</option>
+                    <option>20</option>
+                    <option>50</option>
+                    <option>100</option>
+                </select>
+                <!--<select name="limit" class="form-control" ng-model="entryLimit" ng-options="name as value for (name, value) in itemLimits"></select>-->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row form-group ng-hide animated fadeIn" ng-show="$parent.showFilter">
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body form-horizontal">
+                <div class="row form-group">
+                    <label class="control-label col-md-3">Активность</label>
+                    <div class="col-md-8">
+                        <label class="radio-inline"><input ng-value=""  type="radio" name="active" ng-model="$parent.search.active">Все</label>
+                        <label class="radio-inline"><input ng-value="1" type="radio" name="active" ng-model="$parent.search.active">Активные</label>
+                        <label class="radio-inline"><input ng-value="0" type="radio" name="active" ng-model="$parent.search.active">Неактивные</label>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-md-3">Ключевые слова</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" name="title" ng-model="$parent.search.title" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-md-3">Блокировка</label>
+                    <div class="col-md-8">
+                        <label class="radio-inline"><input ng-value=""  type="radio" name="block" ng-model="$parent.search.block">Все</label>
+                        <label class="radio-inline"><input ng-value="1" type="radio" name="block" ng-model="$parent.search.block">Блокированы</label>
+                        <label class="radio-inline"><input ng-value="0" type="radio" name="block" ng-model="$parent.search.block">Свободные</label>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-md-3">Статус</label>
+                    <div class="col-md-8">
+                        <select class="form-control" name="status" ng-model="$parent.search.status">
+                            <option value="" selected="selected">Любой</option>
+                            <option value="1">[1] Опубликован</option>
+                            <option value="3">[3] Готов к публикации</option>
+                            <option value="2">[2] Черновик</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-md-3">Дата начала публикации</label>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="date_start_from" datepicker-popup="dd.MM.yyyy" ng-model="$parent.date.date_start" is-open="datepickers.date_start_opened" date-disabled="disabled(date, mode)" ng-click="openDatepicker($event, 'date_start_opened')" show-button-bar="false" />
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="date_finish" datepicker-popup="dd.MM.yyyy" ng-model="$parent.date.date_finish" is-open="datepickers.date_finish_opened" date-disabled="disabled(date, mode)" ng-click="openDatepicker($event, 'date_finish_opened')" show-button-bar="false" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-md-3">Дата окончания публикации</label>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="date_finish_from" ng-model="$parent.date.date_finish_from" data-toggle="datepicker"/>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="date_finish_to" ng-model="$parent.date.date_finish_to" data-toggle="datepicker"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-md-3">ID</label>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="id_from" ng-model="$parent.ids.id_from" />
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="id_to" ng-model="$parent.ids.id_to" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-md-3">Дата изменения</label>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="date_update_from" ng-model="$parent.date.search.date_update_from" data-toggle="datepicker"/>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="date_update_to" ng-model="$parent.date.search.date_update_to" data-toggle="datepicker"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-md-3">Дата создания</label>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="date_create_from" ng-model="$parent.search.date_create_from" data-toggle="datepicker"/>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="date_create_to" ng-model="$parent.search.date_create_to" data-toggle="datepicker"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-md-3"></label>
+                    <div class="col-md-8">
+                        <!--<button class="btn btn-primary" ng-click="searchByFilter()">Искать</button>-->
+                        <button class="btn btn-warning" ng-click="$parent.resetFilter()">Сбросить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row form-group" ng-show="$parent.canCreateNew">
+    <div class="col-md-12">
+        <button class="btn btn-danger" ng-click="new()">Добавить</button>
+    </div>
+</div>
